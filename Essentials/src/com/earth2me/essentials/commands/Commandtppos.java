@@ -1,19 +1,20 @@
 package com.earth2me.essentials.commands;
 
-import com.earth2me.essentials.CommandSource;
-import com.earth2me.essentials.Trade;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.utils.FloatUtil;
-import com.google.common.collect.Lists;
+import static com.earth2me.essentials.I18n.tl;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
-import java.util.Collections;
-import java.util.List;
-
-import static com.earth2me.essentials.I18n.tl;
+import com.earth2me.essentials.CommandSource;
+import com.earth2me.essentials.Trade;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.utils.FloatUtil;
+import com.google.common.collect.Lists;
 
 
 public class Commandtppos extends EssentialsCommand {
@@ -27,9 +28,9 @@ public class Commandtppos extends EssentialsCommand {
             throw new NotEnoughArgumentsException();
         }
 
-        final double x = args[0].startsWith("~") ? user.getLocation().getX() + (args[0].length() > 1 ? Integer.parseInt(args[0].substring(1)) : 0) : Integer.parseInt(args[0]);
-        final double y = args[1].startsWith("~") ? user.getLocation().getY() + (args[1].length() > 1 ? Integer.parseInt(args[1].substring(1)) : 0) : Integer.parseInt(args[1]);
-        final double z = args[2].startsWith("~") ? user.getLocation().getZ() + (args[2].length() > 1 ? Integer.parseInt(args[2].substring(1)) : 0) : Integer.parseInt(args[2]);
+        final double x = args[0].startsWith("~") ? user.getLocation().getX() + (args[0].length() > 1 ? Double.parseDouble(args[0].substring(1)) : 0) : Double.parseDouble(args[0]);
+        final double y = args[1].startsWith("~") ? user.getLocation().getY() + (args[1].length() > 1 ? Double.parseDouble(args[1].substring(1)) : 0) : Double.parseDouble(args[1]);
+        final double z = args[2].startsWith("~") ? user.getLocation().getZ() + (args[2].length() > 1 ? Double.parseDouble(args[2].substring(1)) : 0) : Double.parseDouble(args[2]);
         final Location loc = new Location(user.getWorld(), x, y, z, user.getLocation().getYaw(), user.getLocation().getPitch());
         if (args.length == 4) {
             loc.setWorld(ess.getWorld(args[3]));
@@ -58,9 +59,9 @@ public class Commandtppos extends EssentialsCommand {
         }
 
         User user = getPlayer(server, args, 0, true, false);
-        final double x = args[1].startsWith("~") ? user.getLocation().getX() + (args[1].length() > 1 ? Integer.parseInt(args[1].substring(1)) : 0) : Integer.parseInt(args[1]);
-        final double y = args[2].startsWith("~") ? user.getLocation().getY() + (args[2].length() > 1 ? Integer.parseInt(args[2].substring(1)) : 0) : Integer.parseInt(args[2]);
-        final double z = args[3].startsWith("~") ? user.getLocation().getZ() + (args[3].length() > 1 ? Integer.parseInt(args[3].substring(1)) : 0) : Integer.parseInt(args[3]);
+        final double x = args[1].startsWith("~") ? user.getLocation().getX() + (args[1].length() > 1 ? Double.parseDouble(args[1].substring(1)) : 0) : Double.parseDouble(args[1]);
+        final double y = args[2].startsWith("~") ? user.getLocation().getY() + (args[2].length() > 1 ? Double.parseDouble(args[2].substring(1)) : 0) : Double.parseDouble(args[2]);
+        final double z = args[3].startsWith("~") ? user.getLocation().getZ() + (args[3].length() > 1 ? Double.parseDouble(args[3].substring(1)) : 0) : Double.parseDouble(args[3]);
         final Location loc = new Location(user.getWorld(), x, y, z, user.getLocation().getYaw(), user.getLocation().getPitch());
         if (args.length == 5) {
             loc.setWorld(ess.getWorld(args[4]));
